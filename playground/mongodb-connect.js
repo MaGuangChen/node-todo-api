@@ -28,7 +28,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
     // 要求兩參數第一個參數是輸入內容
     // 第二個為call back function
     // db.collection('Todos').insertOne({
-    //     text: 'Something to do',
+    //     text: 'Eat launch',
     //     completed: false
     // }, (err, res) => {
     //     if(err){
@@ -41,9 +41,9 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
 
     // insert new doc into user collection(name, age, location)
     // db.collection('User').insertOne({
-    //     name: 'Paul Ma', 
-    //     age: 27, 
-    //     location: 'Taipei'
+    //     name: 'Kobe', 
+    //     age: 40, 
+    //     location: 'America'
     // }, (err, res) => {
     //     if(err) return console.log('Unable to create user!');
     //     // 因為mongodb的_id attribute有包含timestamp
