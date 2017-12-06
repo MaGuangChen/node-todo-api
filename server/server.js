@@ -50,10 +50,13 @@ app.get('/todos/:id', (req, res) => {
     // 那req.parms就會為 { "id": "123" }
     const id = req.params.id;
     if(!ObjectID.isValid(id)) {
+        // 若id不valid返回404錯誤
         return res.status(404).send(`${id} is not valid`);
     }
     Todo.findById(id).then(todo => {
+        // 沒有這個id的todo
         if(!todo) return res.status(404).send('No this Todo');
+        // 成功找到todo
         res.status(200).send(todo);
     }, e => res.status(400).send('Some error'));
 });
