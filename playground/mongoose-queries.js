@@ -29,7 +29,7 @@ const userId = "5a264d9309950388134be482";
 const idValid = ObjectID.isValid(userId);
 if(!idValid) console.log('User ID not valid');
 
-User.findById({ _id: userId })
+User.findById(userId)
 .then(
     user => {
         if(!user) return console.log('User not found');

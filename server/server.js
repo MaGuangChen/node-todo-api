@@ -1,6 +1,7 @@
 const express = require('express');
 // bodyParser可把json轉為js object
 const bodyParser = require('body-parser');
+const { ObjectID } = require('mongodb');
 
 const { mongoose } = require('./db/mongoose');
 const { Todo } = require('./models/todo');
@@ -37,6 +38,24 @@ app.get('/todos', (req, res) => {
         // 比較方便
         res.send({ todos });
     }, e => res.status(400).send(e));
+});
+
+// GET /todos/123456
+// 在path上後面用/:id會創建一個id 變數並儲存在request object
+// 且我們可以直接訪往那個id 變數
+app.get('/todos/:id', (req, res) => {
+    // req.params中儲存了一些key parameter像是id 變數
+    // 其值為我們真實輸入網址的id
+    // 如果我們輸入的網址為 localhost:3000/todos/123
+    // 那req.parms就會為 { "id": "123" }
+    const id = req.params.id;
+    if(!ObjectID.isValid(id)) {
+        return res.status(404).send(`${id} is not valid`);
+    }
+    Todo.findById(id).then(todo => {
+        if(!todo) return res.status(404).send('No this Todo');
+        res.status(200).send(todo);
+    }, e => res.status(400).send('Some error'));
 });
 
 app.listen(3000, () => console.log('Started on port 3000') );
