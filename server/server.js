@@ -18,14 +18,16 @@ app.use(bodyParser.json());
 // res則是有我們所需要的method
 app.post('/todos', (req, res) => {
     // 繼承todo的類
+    // 因為是post的關係所以我們可以輸入參數
+    // 例如在postman輸入之類的
     const todo = new Todo({
         text: req.body.text
     })
     // 儲存這邊的變數todo
     todo.save().then(
         // 儲存成功就send我們所輸入的text回來
-        doc => res.send(doc), 
-        err => res.send(err)
+        doc => res.status(200).send(doc), 
+        err => res.status(400).send(err)
     );
 });
 
