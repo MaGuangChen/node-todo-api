@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "mocha server/**/*.test.js",
     "test-watch註解":"這邊要記得加--exec參數 並帶入要執行的scripts",
     "test-watch": "nodemon --exec npm test"
+  },
+  "engines": {
+    "node": "9.2.0",
+    "engines註解": "這邊設置我們在heroku主機上運行的node版本"
   },
   "author": "",
   "license": "ISC",

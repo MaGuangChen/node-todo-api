@@ -8,6 +8,8 @@ const { Todo } = require('./models/todo');
 const { User } = require('./models/user');
 
 const app = express();
+// 如果node process中的env是存在的那就用
+const port = process.env.Port || 3000;
 
 // tell express how to use middleware
 // 在此是將json轉為js object
@@ -61,6 +63,6 @@ app.get('/todos/:id', (req, res) => {
     }, e => res.status(400).send('Some error'));
 });
 
-app.listen(3000, () => console.log('Started on port 3000') );
+app.listen(prot, () => console.log(`Started on port ${port}`) );
 
 module.exports = { app };
