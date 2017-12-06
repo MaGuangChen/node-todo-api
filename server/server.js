@@ -27,8 +27,10 @@ app.post('/todos', (req, res) => {
     todo.save().then(
         // 儲存成功就send我們所輸入的text回來
         doc => res.status(200).send(doc), 
-        err => res.status(400).send(err)
+        e => res.status(400).send(e)
     );
 });
 
 app.listen(3000, () => console.log('Started on port 3000') );
+
+module.exports = { app };

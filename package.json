@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha server/**/*.test.js",
+    "test-watch註解":"這邊要記得加--exec參數 並帶入要執行的scripts",
+    "test-watch": "nodemon --exec npm test"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +17,10 @@
     "mongoose": "^4.5.9"
   },
   "devDependencies": {
-    "eslint": "^4.12.1"
+    "eslint": "^4.12.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2",
+    "supertest": "^2.0.0"
   }
 }
